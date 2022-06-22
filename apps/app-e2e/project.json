@@ -1,0 +1,37 @@
+{
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "sourceRoot": "apps/app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@angular-devkit/build-angular:protractor",
+      "options": {
+        "protractorConfig": "apps/app-e2e/protractor.conf.js",
+        "devServerTarget": "app:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "app:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "app:serve:ci"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/app-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "implicitDependencies": [
+    "app"
+  ],
+  "tags": []
+}
